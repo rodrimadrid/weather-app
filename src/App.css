@@ -36,3 +36,36 @@
     transform: rotate(360deg);
   }
 }
+.container-weather{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5%;
+}
+.container-forecast{
+  margin: 5%;
+  width: 100%;
+  overflow: auto;
+  display: flex;
+}
+.forecast{
+
+  display: flex;
+}
+.weather{
+  padding-top: 1.2em;
+  margin-bottom: 5%;
+  width: 12em;
+  height: 12em;
+  border-radius: 100%;
+  border: solid rgb(69, 209, 163) 0.5px;
+  box-shadow: 0 0 0 3.5px aquamarine;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.icon{
+  align-self: center;
+  width: 6em !important;
+}
