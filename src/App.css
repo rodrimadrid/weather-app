@@ -1,47 +1,21 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #12152E;
+  background-image: url('./assets/Cloud-background.png');
+  height: 80em;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
 .container-weather{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   margin: 5%;
+  color: white;
 }
 .container-forecast{
   margin: 5%;
@@ -49,15 +23,23 @@
   overflow: auto;
   display: flex;
 }
-.forecast{
-
+.forecasts{
   display: flex;
+  color: white;
 }
+.forecast{
+  background-color: #4C506D !important;
+  padding-top: 1em;
+  width: 10em;
+  height: 13em;
+}
+
 .weather{
   padding-top: 1.2em;
   margin-bottom: 5%;
-  width: 12em;
-  height: 12em;
+  width: 13em;
+  background-color: #4C506D;
+  height: 13em;
   border-radius: 100%;
   border: solid rgb(69, 209, 163) 0.5px;
   box-shadow: 0 0 0 3.5px aquamarine;
@@ -68,4 +50,20 @@
 .icon{
   align-self: center;
   width: 6em !important;
+}
+.weather-detail{
+  font-size: 3em;
+}
+.detail{
+  background-color: #4C506D !important;
+  padding-top: 1em;
+}
+.loading{
+  height: 20em;
+  margin-top: 6em;
+}
+@media (min-width: 768px){
+  .detail{
+    width: 13em;
+  }
 }

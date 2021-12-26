@@ -15,7 +15,7 @@ function App() {
   async function getWeather(URL) {
     if (URL === 1) {
       let response = await fetch(
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=sp&units=metric&appid=${apiKey}`
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&lang=en&units=metric&appid=${apiKey}`
       );
       let datoscurrentWeather = await response.json();
       setCurrentWeather(datoscurrentWeather);
@@ -70,10 +70,14 @@ function App() {
   return (
     <div className="App">
       <Searchbar handleSearch={handleSearch} />
-      {(forecast && currentWeather) && (
+      {forecast && currentWeather && (
         <WeatherView currentWeather={currentWeather} forecast={forecast} />
       )}
-      {!currentWeather && <h1>Cargando...</h1>}
+      {!currentWeather && (
+        <div className="spinner-border text-info loading" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div>
+      )}
     </div>
   );
 }

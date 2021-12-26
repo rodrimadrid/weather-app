@@ -5,12 +5,12 @@ const Forecast = ({daily, icon, id}) => {
   const date = new Date()
   const nextDay = (i)=>{ 
   const day = new Date((date.getFullYear()), (date.getMonth()) , (date.getDate() + i))
-    return day.toDateString()
+  return day.toDateString().slice(0, 11)
   } 
- 
+
   return (
     <div>
-      <div className="card m-2" width="15rem;">
+      <div className="card m-2 forecast" width="15rem;">
           <p>{nextDay(id + 1)}</p>
         <img
           src={icon(weather[0].icon)}
@@ -18,8 +18,8 @@ const Forecast = ({daily, icon, id}) => {
           alt="..."
         />
         <div className="card-body">
-          <strong className="m-2">{temp.min}°C</strong>
-          <strong className="m-2 text-muted">{temp.max}°C</strong>
+          <strong className="m-2 ">{Math.round(temp.min)}°C</strong>
+          <strong className="m-2 ">{Math.round(temp.max)}°C</strong>
         </div>
       </div>
     </div>
