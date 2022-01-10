@@ -4,7 +4,7 @@ const Searchbar = ({handleSearch}) => {
 
     return (
         <>
-            <nav className="navbar navbar-light mx-3 mb-3">
+            <nav className="navbar navbar-light mb-3">
                 <div className="container-fluid justify-content-center">
                     <form className="d-flex"onSubmit={handleSearch}>
                     <input className="form-control me-2" type="search" name='country' placeholder="Search" aria-label="Search"/>

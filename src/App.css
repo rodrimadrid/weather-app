@@ -1,14 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap');
+
 .App {
   text-align: center;
   background-color: #12152E;
   background-image: url('./assets/Cloud-background.png');
-  height: 80em;
+  height: 100vh;
+  font-family: 'Roboto Slab', serif;
 }
 
 .App-link {
   color: #61dafb;
 }
-
+.index{
+  display: flex;
+  justify-content: center;
+  padding-top: 4em;
+  color: white;
+}
+.search-bar{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 1.5em;
+}
 .container-weather{
   display: flex;
   flex-direction: column;
@@ -37,15 +51,17 @@
 .weather{
   padding-top: 1.2em;
   margin-bottom: 5%;
-  width: 13em;
+  width: 15em;
   background-color: #4C506D;
-  height: 13em;
+  height: 15em;
   border-radius: 100%;
   border: solid rgb(69, 209, 163) 0.5px;
   box-shadow: 0 0 0 3.5px aquamarine;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+
 }
 .icon{
   align-self: center;
@@ -61,8 +77,22 @@
 .loading{
   margin-top: 6em;
 }
+.animation{
+  transform: scale(0.98);
+  transition: 0.2s;
+}
+.footer{
+  background-color: rgb(69, 209, 163);
+  opacity: 0.7;
+  color: #12152E;
+}
+.footer-text{
+  color: black;
+  font-weight: 200;
+}
 @media (min-width: 768px){
   .detail{
     width: 13em;
   }
+
 }

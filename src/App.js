@@ -3,12 +3,14 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Searchbar from "./components/Searchbar";
 import WeatherView from "./components/WeatherView";
-
+import GeoAlt from "./components/GeoAlt";
+import Footer from "./components/Footer";
 function App() {
   const [city, setCity] = useState();
   const [currentWeather, setCurrentWeather] = useState();
   const [forecast, setForecast] = useState();
   const [coord, setCoord] = useState();
+  const [geoLocation, setGeoLocation] = useState(false)
 
   const apiKey = "cfc0bb2a30e6c158d818575f9fd77655";
 
@@ -39,12 +41,26 @@ function App() {
     e.preventDefault();
     let input = e.target.firstChild;
     setCity(input.value);
-  
+    setGeoLocation(false)
+    input.value = ''
+    setTimeout(() => {
+      setCity()
+    }, 2000);
   };
-  const getLocation = () => {
-    navigator.geolocation
-      ? navigator.geolocation.getCurrentPosition(position)
-      : console.log("ubicacion no disponible");
+  const animation = (e)=>{
+    let element = document.getElementById('index')
+    element.classList.add('animation')
+    setTimeout(() => {
+     element.classList.remove('animation')
+     handlerLocation()
+    }, 200);
+   
+  }
+  const handlerLocation = (e) => {
+    !geoLocation ? setGeoLocation(true) : setGeoLocation(false)
+    geoLocation ? setCity() : console.log('la');
+    navigator.geolocation ? navigator.geolocation.getCurrentPosition(position)
+      : alert("geolocation not find");
   };
   const position = (pos) => {
     setCoord({
@@ -52,32 +68,50 @@ function App() {
       lat: pos.coords.latitude,
     });
   };
+ 
   useEffect(() => {
-    getLocation();
-  }, []);
-  useEffect(() => {
-   coord ?  getWeather(2) : console.log('coords not found')
+    if (coord) {
+      getWeather(2)
+      let app = document.getElementsByClassName('App')
+      app[0].style.height = 'max-content'
+    }
+   
   }, [coord]);
   useEffect(() => {
     if (!city && coord) {
       getWeather(3);
+    }else if (city && coord) {
+      geoLocation ? getWeather(3) : getWeather(1)
     }
+    else if (city) {getWeather(1)}
   }, [city, coord]);
-  useEffect(() => {
-    city? getWeather(1) : console.log('city not found');
-  }, [city])
+ 
 
   return (
     <div className="App">
-      <Searchbar handleSearch={handleSearch} />
+      <div className="search-bar">
+        <Searchbar handleSearch={handleSearch} /> 
+        <GeoAlt handlerLocation={handlerLocation} geoLocation={geoLocation}/>
+      </div>
       {forecast && currentWeather && (
-        <WeatherView currentWeather={currentWeather} forecast={forecast} />
+        <WeatherView currentWeather={currentWeather} forecast={forecast}  />
       )}
-      {!currentWeather && (
-        <div className="spinner-border text-info loading" role="status">
-          <span className="visually-hidden">Loading...</span>
+      {(!currentWeather && !geoLocation && !city) && (
+
+        <div className="index" >
+          <div className="weather" id='index' onClick={animation} >
+            <h2>Search your weather</h2>
+          </div>
         </div>
-      )}
+     )}
+      {((city && !currentWeather) || (geoLocation && !currentWeather)) && (
+         <div className="spinner-border text-info loading" role="status">
+          <span className="visually-hidden">Loading...</span>
+        </div> 
+      )
+
+      }
+      <Footer />
     </div>
   );
 }
