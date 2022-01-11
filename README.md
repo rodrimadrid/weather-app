@@ -23,4 +23,4 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - Defining a custom directive for instantly embedding sort of "weather data day panel"
 
 
-![demo](navegation.gif)
+![demo](navigation.gif)
