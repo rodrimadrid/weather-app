@@ -7,7 +7,9 @@
   height: 100vh;
   font-family: 'Roboto Slab', serif;
 }
-
+.App-content{
+  height: max-content;
+}
 .App-link {
   color: #61dafb;
 }
@@ -15,6 +17,7 @@
   display: flex;
   justify-content: center;
   padding-top: 4em;
+  margin-bottom: 25%;
   color: white;
 }
 .search-bar{
@@ -76,6 +79,7 @@
 }
 .loading{
   margin-top: 6em;
+  margin-bottom: 15em;
 }
 .animation{
   transform: scale(0.98);
